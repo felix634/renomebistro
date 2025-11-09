@@ -1,0 +1,52 @@
+---
+// A FadeIn.astro komponens scriptje
+// Ez biztosítja, hogy a JS csak a böngészőben fusson
+// A 'client:only' flag azért van kint, mert a 'client:load' a Netlify hiba miatt problémás lehet
+
+// Kisebb késleltetés hozzáadása, hogy az elemek ne egyszerre jelenjenek meg
+const { delay = '0ms', duration = '700ms', client = "visible" } = Astro.props; 
+
+// Az animáció stílusa és kezdőállapota
+const startStyle = `opacity: 0; transform: translateY(30px); transition: opacity ${duration} ease-out, transform ${duration} ease-out; transition-delay: ${delay};`;
+---
+
+<div 
+    class="fade-in-container" 
+    style={startStyle}
+    data-delay={delay}
+    data-duration={duration}
+    client:{client} 
+>
+    <slot />
+</div>
+
+<script>
+    // Intersection Observer logikája a kliens oldalon fut
+    document.addEventListener('astro:load', () => {
+        // Observer beállítása
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                // Ha az elem láthatóvá válik
+                if (entry.isIntersecting) {
+                    const target = entry.target as HTMLElement;
+
+                    // Előző stílus eltávolítása és animált stílus hozzáadása
+                    target.style.opacity = '1';
+                    target.style.transform = 'translateY(0)';
+                    
+                    // Miután az elem beúszott, leállítjuk a figyelést
+                    observer.unobserve(target);
+                }
+            });
+        }, {
+            // Marginnal korábban is beúszhatnak az elemek (pl. 100px-el az alja előtt)
+            rootMargin: '0px 0px -100px 0px', 
+            threshold: 0.01 // Elegendő, ha 1% látszik az elemből
+        });
+
+        // Minden FadeIn konténer figyelése
+        document.querySelectorAll('.fade-in-container').forEach(element => {
+            observer.observe(element);
+        });
+    });
+</script>

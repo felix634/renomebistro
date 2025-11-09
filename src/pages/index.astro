@@ -7,16 +7,31 @@ import Menu from '../components/Menu.astro';
 import Gallery from '../components/Gallery.astro';
 import Cta from '../components/Cta.astro';
 import Footer from '../components/Footer.astro';
+// Új import:
+import FadeIn from '../components/FadeIn.astro';
 ---
 
 <Layout title="Renomé Café & Bistro - Prémium Bisztró Miskolc Szívében">
 	<Header />
-	<main class="pt-20"> {/* A pt-20 kompenzálja a fix fejléc magasságát */}
+	<main class="pt-20"> 
 		<Hero />
-		<About />
-		<Menu />
-		<Gallery />
-		<Cta />
+		
+        <FadeIn delay="100ms">
+            <About />
+        </FadeIn>
+        
+        <FadeIn delay="200ms">
+            <Menu />
+        </FadeIn>
+
+        <FadeIn delay="100ms">
+            <Gallery />
+        </FadeIn>
+        
+        <FadeIn delay="0ms">
+            <Cta />
+        </FadeIn>
+        
 	</main>
 	<Footer />
 </Layout>
