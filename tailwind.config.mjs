@@ -7,21 +7,17 @@ export default {
         extend: {
             // Betűtípus beállítása
             fontFamily: {
-                // A 'serif' alapértelmezett betűtípus felülírása Playfair Display-jel
+                // Playfair Display (elegáns, logó stílus)
                 serif: ['Playfair Display', 'Georgia', 'serif'],
-                // A 'sans' (alap) betűtípus beállítása egy letisztult fontra
+                // Inter (letisztult, modern)
                 sans: ['Inter', 'system-ui', 'sans-serif'],
             },
-            // Egyedi színek beállítása a logó monokróm stílusához
+            // Egyedi színek (monokróm séma)
             colors: {
-                'renome-primary': '#4A4A4A', // Sötétebb szürke, a logó színe
-                'renome-secondary': '#B38B59', // Elegáns arany/bézs a kiemelésekhez (opcionális)
-                'renome-bg': '#F7F7F7', // Majdnem fehér háttér
+                'renome-primary': '#4A4A4A', 
+                'renome-bg': '#F7F7F7',
             },
         },
     },
-    plugins: [
-        // Ha szükséged lesz form elemek stílusára (pl. Foglalás)
-        // require('@tailwindcss/forms'),
-    ],
+    plugins: [],
 };

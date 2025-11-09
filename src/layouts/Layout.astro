@@ -1,6 +1,5 @@
 ---
 import { ViewTransitions } from 'astro:transitions';
-import { AstroFont } from 'astro-font';
 import '../styles/global.css';
 
 interface Props {
@@ -18,41 +17,24 @@ const { title } = Astro.props;
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/png" href="/images/logo.png" />
 		<ViewTransitions />
-		<AstroFont 
-            config={[
-                {
-                    name: 'Playfair Display',
-                    src: [{
-                        path: '/fonts/PlayfairDisplay-VariableFont_wght.ttf',
-                        weight: '400 900'
-                    }],
-                    preload: true,
-                    // Egy elegáns betűtípus a logó stílusához
-                    // Ha a font nem elérhető lokálisan, a Google Fonts CDN-ről is be lehet tölteni,
-                    // de lokális használat esetén a font fájlt be kell tenni a public mappába.
-                }
-            ]}
-        />
+        
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+        
 		<title>{title}</title>
 		<style>
 			/* Smooth scroll effektus az egész oldalra */
 			html {
 				scroll-behavior: smooth;
 			}
-			/* Egy kis extra, a letisztultság érdekében: görgetősáv stílus */
-			body::-webkit-scrollbar {
-				width: 8px;
-			}
-			body::-webkit-scrollbar-thumb {
-				background-color: #A0AEC0; /* Grey-400 */
-				border-radius: 4px;
-			}
-			body::-webkit-scrollbar-track {
-				background-color: #f7f7f7;
+			/* A Playfair Display használata a címsorokhoz */
+			.font-serif {
+				font-family: 'Playfair Display', serif;
 			}
 		</style>
 	</head>
-	<body class="bg-gray-50 text-gray-800 antialiased">
+	<body class="bg-gray-50 text-gray-800 antialiased font-sans">
 		<slot />
 	</body>
 </html>
