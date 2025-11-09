@@ -1,0 +1,22 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Hero from '../components/Hero.astro';
+import About from '../components/About.astro';
+import Menu from '../components/Menu.astro';
+import Gallery from '../components/Gallery.astro';
+import Cta from '../components/Cta.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout title="Renomé Café & Bistro - Prémium Bisztró Miskolc Szívében">
+	<Header />
+	<main class="pt-20"> {/* A pt-20 kompenzálja a fix fejléc magasságát */}
+		<Hero />
+		<About />
+		<Menu />
+		<Gallery />
+		<Cta />
+	</main>
+	<Footer />
+</Layout>

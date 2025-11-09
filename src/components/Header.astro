@@ -1,0 +1,44 @@
+---
+const navItems = [
+    { title: 'Kezdőlap', href: '#home' },
+    { title: 'Étlap', href: '#menu' },
+    { title: 'Galéria', href: '#gallery' },
+    { title: 'Rólunk', href: '#about' },
+];
+---
+
+<header class="fixed top-0 left-0 w-full bg-white/95 backdrop-blur-sm z-50 shadow-md">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+        <a href="#home" class="flex-shrink-0">
+            <img src="/images/logo.png" alt="Renomé Café & Bistro logó" class="h-16 w-auto" />
+        </a>
+
+        <nav class="hidden md:block">
+            <ul class="flex space-x-8">
+                {navItems.map(item => (
+                    <li>
+                        <a 
+                            href={item.href} 
+                            class="text-gray-600 hover:text-gray-900 transition duration-300 font-semibold uppercase tracking-wider text-sm p-2"
+                        >
+                            {item.title}
+                        </a>
+                    </li>
+                ))}
+            </ul>
+        </nav>
+
+        <a 
+            href="#reservation" 
+            class="hidden md:block px-5 py-2 border border-gray-800 text-sm font-bold uppercase tracking-wider text-gray-800 hover:bg-gray-800 hover:text-white transition duration-300"
+        >
+            Foglalás
+        </a>
+
+        <button class="md:hidden text-gray-600 hover:text-gray-900 transition duration-300">
+            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+            </svg>
+        </button>
+    </div>
+</header>

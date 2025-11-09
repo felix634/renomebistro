@@ -1,0 +1,58 @@
+---
+import { ViewTransitions } from 'astro:transitions';
+import { AstroFont } from 'astro-font';
+import '../styles/global.css';
+
+interface Props {
+	title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="hu">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content="Astro description" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/png" href="/images/logo.png" />
+		<ViewTransitions />
+		<AstroFont 
+            config={[
+                {
+                    name: 'Playfair Display',
+                    src: [{
+                        path: '/fonts/PlayfairDisplay-VariableFont_wght.ttf',
+                        weight: '400 900'
+                    }],
+                    preload: true,
+                    // Egy elegáns betűtípus a logó stílusához
+                    // Ha a font nem elérhető lokálisan, a Google Fonts CDN-ről is be lehet tölteni,
+                    // de lokális használat esetén a font fájlt be kell tenni a public mappába.
+                }
+            ]}
+        />
+		<title>{title}</title>
+		<style>
+			/* Smooth scroll effektus az egész oldalra */
+			html {
+				scroll-behavior: smooth;
+			}
+			/* Egy kis extra, a letisztultság érdekében: görgetősáv stílus */
+			body::-webkit-scrollbar {
+				width: 8px;
+			}
+			body::-webkit-scrollbar-thumb {
+				background-color: #A0AEC0; /* Grey-400 */
+				border-radius: 4px;
+			}
+			body::-webkit-scrollbar-track {
+				background-color: #f7f7f7;
+			}
+		</style>
+	</head>
+	<body class="bg-gray-50 text-gray-800 antialiased">
+		<slot />
+	</body>
+</html>

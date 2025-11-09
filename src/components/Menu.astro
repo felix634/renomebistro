@@ -1,0 +1,68 @@
+---
+// Ez a menü a feltöltött képek alapján van összeállítva
+const menuItems = [
+    // Főételek (Rövidített változat, a bemutatáshoz elegendő)
+    { 
+        category: 'FŐÉTELEK - MAIN COURSES', 
+        items: [
+            { name: 'Rántott Csirkemellfilé', desc: 'Deep fried chicken thigh fillet, new potatoes with cumin, romaine lettuce / 5.190 Ft', allergens: '1, 9, 11' },
+            { name: 'Ropogós Bőrén Sült Csirkemell', desc: 'Pan fried chicken breast, mashed potatoes, mushroom velouté sauce / 5.190 Ft', allergens: '11' },
+            { name: 'Marhapörkölt', desc: 'Beef stew, Hungarian dumpling with parsley / 5.990 Ft', allergens: '1, 9, 11' },
+            { name: 'Renomé Burger', desc: 'Renomé burger, beef patty, bacon, homemade hamburger sauce, salad, tomato, handout potato or sweet potatoes / 5.490 Ft', allergens: '1, 6, 9, 11' },
+            { name: 'Renomé Lady Burger', desc: 'Pulled duck, cheddar, purple onion jam, mayo, fried julien vegetables home-made-hamburger sauce / 5.490 Ft', allergens: '1, 6, 9, 11' },
+            { name: 'Rosé Kacsamell', desc: 'Rosé duck breast, potato, grilled vegetables / 5.990 Ft', allergens: '1, 11' },
+            { name: 'Óriás Sertésszűz Rántva', desc: 'Wiener Schnitzel with roasted parsley potato, sour vegetables / 6.390 Ft', allergens: '1, 9, 11' },
+            { name: 'BBQ Oldalas', desc: 'BBQ Ribs, potatoes wedges, coleslaw salad / 5.990 Ft', allergens: '2, 6, 11, 12' },
+        ]
+    },
+    // Levesek
+    { 
+        category: 'LEVESEK - SOUPS', 
+        items: [
+            { name: 'Falusi Kakasleves', desc: 'Rich rooster broth, Hungarian home-made noodles / 2.750 Ft', allergens: '1, 2, 9' },
+            { name: 'Bableves', desc: 'Bean Goulash with Beef / 3.290 Ft', allergens: '1, 2, 9' },
+        ]
+    },
+    // Előételek / Saláták (a tisztánlátás érdekében a salátákat is ide csoportosítjuk)
+    { 
+        category: 'SALÁTÁK & ELŐÉTELEK', 
+        items: [
+            { name: 'Sajtválogatás', desc: 'A2 Cheese mix, mixed salad, purple onion jam, toast / 3.890 Ft', allergens: '1, 11' },
+            { name: 'Halterpertő', desc: 'Fish cracklin, with fresh vegetables and red onion mayonnaise / 3.890 Ft', allergens: '1, 4, 9' },
+            { name: 'Currys Sült Csicseriborsó Saláta', desc: 'Curried Chickpeas with Romaine Lettuce / 3.290 Ft', allergens: '-' },
+            { name: 'Cézár Saláta Grillezett Csirkével', desc: 'Ceasar salad with Grilled Chicken Breast / 3.990 Ft', allergens: '1, 11, 12' },
+        ]
+    },
+];
+---
+
+<section id="menu" class="py-24 bg-gray-100" aria-label="Étlap szekció">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-4xl font-serif font-bold text-gray-900 text-center mb-16">Kínálatunk</h2>
+        
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-x-12 gap-y-16">
+            {menuItems.map(section => (
+                <div class="mb-8">
+                    <h3 class="text-2xl font-semibold text-gray-800 border-b-2 border-gray-400 pb-2 mb-8 uppercase tracking-wider">
+                        {section.category}
+                    </h3>
+                    <div class="space-y-6">
+                        {section.items.map(item => (
+                            <div class="flex flex-col">
+                                <div class="flex justify-between items-start">
+                                    <h4 class="text-lg font-bold text-gray-900 pr-4">{item.name}</h4>
+                                </div>
+                                <p class="text-gray-600 italic mt-1 text-sm">{item.desc}</p>
+                                <p class="text-xs text-gray-400 mt-0.5">Allergének: {item.allergens}</p>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            ))}
+        </div>
+
+        <div class="text-center mt-16">
+             <p class="text-sm text-gray-500">Az allergének listáját és a teljes étlapot kérje kollégáinktól.</p>
+        </div>
+    </div>
+</section>
