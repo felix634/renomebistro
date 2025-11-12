@@ -14,7 +14,7 @@ export default {
             },
             // Egyedi színek (monokróm séma)
             colors: {
-                'renome-primary': '#4A4A4A', 
+                'renome-primary': '#3a3a3a', 
                 'renome-bg': '#F7F7F7',
             },
         },
